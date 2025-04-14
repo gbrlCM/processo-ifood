@@ -1,0 +1,33 @@
+name: iFoodProcess
+options:
+  minimumXcodeGenVersion: 2.0
+  groupSortPosition: top
+  generateEmptyDirectories: true
+  bundleIdPrefix: com.gbrlcm.processoseletivo
+  deploymentTarget:
+    iOS: "15.0"
+settings:
+    DEVELOPMENT_TEAM: WK7599VNDW
+packages:
+  SnapKit:
+    url: https://github.com/SnapKit/SnapKit.git
+    from: 5.0.1
+localPackages:
+  - ./Modules/StartUp
+  - ./Modules/DependencyInjection
+  - ./Modules/RouterImplementation
+  - ./Modules/RouterInterface
+  - ./Modules/Home
+    
+targets:
+    App:
+        type: application
+        platform: iOS
+        sources:
+            - path: App
+        dependencies:
+            - package: StartUp
+        scheme:
+            gatherCoverageData: true
+            testTargets:
+                - package: StartUp/StartUpTests
