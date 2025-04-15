@@ -21,7 +21,9 @@ final class HomeInteractor: Reducer<Action, State> {
     override func reduce(action: Action, for state: State) async -> State {
         switch action {
         case .search(let query):
-            return await searchRepos(query: query, state: state)
+            var newState = state
+            newState.repositories = []
+            return await searchRepos(query: query, state: newState)
         case .loadMore:
             return await loadMore(state: state)
         case .loading(let value):

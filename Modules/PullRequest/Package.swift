@@ -5,8 +5,8 @@ import PackageDescription
 
 let package = Package(
     name: "PullRequest",
+    platforms: [.iOS(.v15)],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "PullRequestImplementation",
             targets: ["PullRequestImplementation"]
@@ -16,10 +16,26 @@ let package = Package(
             targets: ["PullRequestInterface"]
         )
     ],
+    dependencies: [
+        .package(path: "../ReducerCore"),
+        .package(path: "../Network"),
+        .package(path: "../Models"),
+        .package(path: "../DesignSystem"),
+        .package(path: "../DependencyInjection"),
+        .package(path: "../RouterInterface")
+    ],
     targets: [
         .target(
             name: "PullRequestImplementation",
-            dependencies: ["PullRequestInterface"]
+            dependencies: [
+                "PullRequestInterface",
+                "ReducerCore",
+                "Network",
+                "Models",
+                "DesignSystem",
+                "DependencyInjection",
+                "RouterInterface"
+            ]
         ),
         .target(
             name: "PullRequestInterface"

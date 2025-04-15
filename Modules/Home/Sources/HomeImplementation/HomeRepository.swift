@@ -27,14 +27,14 @@ final actor HomeRepository: HomeRepositoryProtocol {
 
     private func queryUrl(query: String, page: Int) -> URL? {
         var components = URLComponents()
-        components.scheme = "https"
-        components.host = "api.github.com"
         components.path = "/search/repositories"
         components.queryItems = [
             URLQueryItem(name: "q", value: query),
             URLQueryItem(name: "page", value: "\(page)")
         ]
-        return components.url
+
+        let builder = RouterBuilder(host: .api)
+        return builder.build(for: components)
     }
 }
 

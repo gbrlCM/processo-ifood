@@ -10,7 +10,7 @@ import Foundation
 public struct GitHubRepository: Codable, Equatable, Sendable {
     public let id: UInt64
     public let name: String
-    public let owner: Owner
+    public let owner: GitHubOwner
     public let fullName: String
     public let description: String?
     public let htmlUrl: URL
@@ -21,14 +21,13 @@ public struct GitHubRepository: Codable, Equatable, Sendable {
     public let watchersCount: Int
     public let license: License?
 
-    public struct Owner: Codable, Equatable, Sendable {
-        public let login: String
-        public let id: UInt64
-        public let avatarUrl: URL
-    }
-
     public struct License: Codable, Equatable, Sendable {
         public let name: String
         public let url: URL?
+
+        public init(name: String, url: URL?) {
+            self.name = name
+            self.url = url
+        }
     }
 }

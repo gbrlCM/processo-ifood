@@ -23,7 +23,7 @@ let package = Package(
             dependencies: [
                 "RouterInterface",
                 .product(name: "HomeInterface", package: "Home"),
-                .product(name: "PullRequestInterface", package: "PullRequest"),
+                .product(name: "PullRequestInterface", package: "PullRequest")
 
             ]
         ),
