@@ -18,11 +18,13 @@ localPackages:
   - ./Modules/RouterImplementation
   - ./Modules/RouterInterface
   - ./Modules/Home
+  - ./Modules/PullRequest
+  - ./Modules/WebView
   - ./Modules/Models
   - ./Modules/Network
   - ./Modules/ReducerCore
   - ./Modules/DesignSystem
-    
+
 targets:
     App:
         type: application
