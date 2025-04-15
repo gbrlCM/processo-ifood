@@ -5,6 +5,8 @@
 //  Created by Gabriel Ferreira de Carvalho on 14/04/25.
 //
 import Foundation
+import UIKit
+import DesignSystem
 import RouterInterface
 
 @MainActor
@@ -27,6 +29,11 @@ final class HomeRouter: HomeRouterProtocol {
     }
 
     func error(message: String, tryAgain: @escaping () -> Void) {
-        
+        let viewController = DSErrorViewController()
+        viewController.configure(title: "Error", message: message, buttonTitle: L10n.Error.button, onTap: tryAgain)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = .pageSheet
+        navigationController.sheetPresentationController?.detents = [.medium()]
+        navigator?.present(viewController: navigationController, animated: true)
     }
 }

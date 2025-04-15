@@ -43,7 +43,7 @@ ViewModel.Item
         navigationItem.searchController = searchController
         searchController.searchBar.text = searchSubject.value
         searchController.searchResultsUpdater = self
-        navigationItem.title = "Repositories"
+        navigationItem.title = L10n.name
         setupBindings()
     }
 

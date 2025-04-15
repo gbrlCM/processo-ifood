@@ -61,4 +61,4 @@ strings:
   inputs: Sources/HomeImplementation/Resources/en.lproj
   outputs:
     - templateName: structured-swift5
-      output: Sources/Home/Generated/Strings.swift
+      output: Sources/HomeImplementation/Generated/Strings.swift

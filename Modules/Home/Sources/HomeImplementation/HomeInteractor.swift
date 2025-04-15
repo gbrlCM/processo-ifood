@@ -48,7 +48,10 @@ final class HomeInteractor: Reducer<Action, State> {
             newState.isError = true
             newState.canLoadMoreItems = false
             newState.isLoading = false
+            router.error(message: L10n.Error.message, tryAgain: { [weak self] in
+            })
         }
+
 
         return newState
     }
