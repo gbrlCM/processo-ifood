@@ -61,6 +61,10 @@ ViewModel.Item
     override func didScrollToTheEnd() {
         execute(.loadMore)
     }
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        execute(.selectItemAt(index: indexPath.row))
+    }
 }
 
 extension HomeViewController: UISearchResultsUpdating {

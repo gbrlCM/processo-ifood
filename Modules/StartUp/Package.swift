@@ -18,6 +18,7 @@ let package = Package(
         .package(path: "../RouterImplementation"),
         .package(path: "../RouterInterface"),
         .package(path: "../Home"),
+        .package(path: "../PullRequest"),
         .package(path: "../Network")
     ],
     targets: [
@@ -32,7 +33,9 @@ let package = Package(
                 "RouterInterface",
                 "Network",
                 .product(name: "HomeInterface", package: "Home"),
-                .product(name: "HomeImplementation", package: "Home")
+                .product(name: "HomeImplementation", package: "Home"),
+                .product(name: "PullRequestInterface", package: "PullRequest"),
+                .product(name: "PullRequestImplementation", package: "PullRequest")
             ]
         ),
         .testTarget(

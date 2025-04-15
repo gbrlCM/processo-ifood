@@ -120,6 +120,11 @@ where ViewModel.Item == Item, ViewModel.Section == Section {
             didScrollToTheEnd()
         }
     }
+
+    open func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {}
 }
 
 extension StatefulCollectionViewController {

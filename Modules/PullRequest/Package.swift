@@ -27,6 +27,6 @@ let package = Package(
         .testTarget(
             name: "PullRequestTests",
             dependencies: ["PullRequestImplementation"]
-        ),
+        )
     ]
 )

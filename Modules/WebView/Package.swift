@@ -13,7 +13,7 @@ let package = Package(
         .library(
             name: "WebViewImplementation",
             targets: ["WebViewImplementation"]
-        ),
+        )
     ],
     targets: [
         .target(
@@ -26,6 +26,6 @@ let package = Package(
         .testTarget(
             name: "WebViewTests",
             dependencies: ["WebViewImplementation", "WebViewInterface"]
-        ),
+        )
     ]
 )

@@ -14,14 +14,17 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../RouterInterface"),
-        .package(path: "../Home")
+        .package(path: "../Home"),
+        .package(path: "../PullRequest")
     ],
     targets: [
         .target(
             name: "RouterImplementation",
             dependencies: [
                 "RouterInterface",
-                .product(name: "HomeInterface", package: "Home")
+                .product(name: "HomeInterface", package: "Home"),
+                .product(name: "PullRequestInterface", package: "PullRequest"),
+
             ]
         ),
         .testTarget(

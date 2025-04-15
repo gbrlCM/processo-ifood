@@ -10,6 +10,8 @@ import Foundation
 
 enum Action {
     case search(query: String)
+    case selectItemAt(index: Int)
+    case restart
     case loadMore
     case loading(Bool)
 }

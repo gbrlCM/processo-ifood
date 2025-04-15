@@ -6,11 +6,13 @@
 //
 
 import DependencyInjection
+import Network
 import RouterInterface
 import RouterImplementation
 import HomeInterface
-import Network
 import HomeImplementation
+import PullRequestInterface
+import PullRequestImplementation
 
 extension StartUp {
     public static func registerDependencies() {
@@ -30,6 +32,10 @@ extension StartUp {
 
         DependencyInjection.shared.register(type: ImageRepositoryProtocol.self) {
             ImageRepository.shared
+        }
+
+        DependencyInjection.shared.register(type: PullRequestFactoryProtocol.self) {
+            PullRequestFactory()
         }
     }
 }

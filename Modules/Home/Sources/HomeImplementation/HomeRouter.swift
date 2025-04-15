@@ -11,7 +11,7 @@ import RouterInterface
 
 @MainActor
 protocol HomeRouterProtocol {
-    func pullRequests(url: URL)
+    func pullRequests(path: String)
     func error(message: String, tryAgain: @escaping () -> Void)
 }
 
@@ -24,8 +24,12 @@ final class HomeRouter: HomeRouterProtocol {
         self.router = router
     }
 
-    func pullRequests(url: URL) {
+    func pullRequests(path: String) {
+        guard let viewController = router.view(for: PullRequestRoute(path: path)) else {
+            return
+        }
 
+        navigator?.push(viewController: viewController, animated: true)
     }
 
     func error(message: String, tryAgain: @escaping () -> Void) {
