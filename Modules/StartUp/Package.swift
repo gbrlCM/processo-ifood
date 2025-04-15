@@ -10,13 +10,15 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "StartUp",
-            targets: ["StartUp"]),
+            targets: ["StartUp"]
+        )
     ],
     dependencies: [
         .package(path: "../DependencyInjection"),
         .package(path: "../RouterImplementation"),
         .package(path: "../RouterInterface"),
-        .package(path: "../Home")
+        .package(path: "../Home"),
+        .package(path: "../Network")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -28,6 +30,7 @@ let package = Package(
                 "DependencyInjection",
                 "RouterImplementation",
                 "RouterInterface",
+                "Network",
                 .product(name: "HomeInterface", package: "Home"),
                 .product(name: "HomeImplementation", package: "Home")
             ]
@@ -35,6 +38,6 @@ let package = Package(
         .testTarget(
             name: "StartUpTests",
             dependencies: ["StartUp"]
-        ),
+        )
     ]
 )

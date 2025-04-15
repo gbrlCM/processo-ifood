@@ -9,6 +9,7 @@ import DependencyInjection
 import RouterInterface
 import RouterImplementation
 import HomeInterface
+import Network
 import HomeImplementation
 
 extension StartUp {
@@ -18,9 +19,17 @@ extension StartUp {
         ) {
             Router()
         }
-        
+
         DependencyInjection.shared.register(type: HomeFactoryProtocol.self) {
             HomeFactory()
+        }
+
+        DependencyInjection.shared.register(type: NetworkProtocol.self) {
+            Network()
+        }
+
+        DependencyInjection.shared.register(type: ImageRepositoryProtocol.self) {
+            ImageRepository.shared
         }
     }
 }

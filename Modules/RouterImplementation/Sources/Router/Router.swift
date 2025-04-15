@@ -5,13 +5,13 @@ import UIKit
 
 public final class Router: RouterProtocol {
     private let injector: DependencyInjectionProtocol
-    
+
     public init(
         injector: DependencyInjectionProtocol = DependencyInjection.shared
     ) {
         self.injector = injector
     }
-    
+
     public func view(for route: Route) -> UIViewController? {
         switch route.path {
         case HomeRoute.path:
@@ -21,4 +21,3 @@ public final class Router: RouterProtocol {
         }
     }
 }
-

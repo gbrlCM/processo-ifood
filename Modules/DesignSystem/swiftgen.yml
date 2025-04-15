@@ -1,0 +1,8 @@
+colors:
+  inputs: ./Sources/DesignSystem/Resources/colors.json
+  outputs:
+    templateName: swift5
+    output: ./Sources/DesignSystem/Generated/Colors.swift
+    params:
+        publicAccess: true
+        enumName: Colors

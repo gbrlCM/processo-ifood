@@ -9,7 +9,8 @@ let package = Package(
     products: [
         .library(
             name: "RouterImplementation",
-            targets: ["RouterImplementation"]),
+            targets: ["RouterImplementation"]
+        )
     ],
     dependencies: [
         .package(path: "../RouterInterface"),
@@ -26,8 +27,8 @@ let package = Package(
         .testTarget(
             name: "RouterImplementationTests",
             dependencies: [
-                "RouterImplementation",
+                "RouterImplementation"
             ]
-        ),
+        )
     ]
 )

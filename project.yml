@@ -18,11 +18,19 @@ localPackages:
   - ./Modules/RouterImplementation
   - ./Modules/RouterInterface
   - ./Modules/Home
+  - ./Modules/Models
+  - ./Modules/Network
+  - ./Modules/ReducerCore
+  - ./Modules/DesignSystem
     
 targets:
     App:
         type: application
         platform: iOS
+        postCompileScripts:
+            - path: Scripts/swiftlint.sh
+              name: Swift Lint & Gen
+              script: "swiftlint"
         sources:
             - path: App
         dependencies:

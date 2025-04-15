@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "Home",
+    defaultLocalization: "en",
     platforms: [.iOS(.v15)],
     products: [
         .library(
@@ -14,11 +15,15 @@ let package = Package(
         .library(
             name: "HomeImplementation",
             targets: ["HomeImplementation"]
-        ),
+        )
     ],
     dependencies: [
         .package(path: "../RouterInterface"),
         .package(path: "../DependencyInjection"),
+        .package(path: "../Models"),
+        .package(path: "../ReducerCore"),
+        .package(path: "../DesignSystem"),
+        .package(url: "https://github.com/SnapKit/SnapKit.git", .upToNextMajor(from: "5.0.1"))
     ],
     targets: [
         .target(
@@ -30,12 +35,17 @@ let package = Package(
             dependencies: [
                 "HomeInterface",
                 "RouterInterface",
-                "DependencyInjection"
-            ]
+                "DependencyInjection",
+                "Models",
+                "ReducerCore",
+                "DesignSystem",
+                "SnapKit"
+            ],
+            resources: [.process("Resources")]
         ),
         .testTarget(
             name: "HomeTests",
             dependencies: ["HomeImplementation", "HomeInterface"]
-        ),
+        )
     ]
 )

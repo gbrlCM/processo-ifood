@@ -9,7 +9,7 @@ let package = Package(
     products: [
         .library(
             name: "DependencyInjection",
-            targets: ["DependencyInjection"]),
+            targets: ["DependencyInjection"])
     ],
     dependencies: [
         .package(url: "https://github.com/Swinject/Swinject.git", from: "2.8.0")
@@ -20,6 +20,6 @@ let package = Package(
         .testTarget(
             name: "DependencyInjectionTests",
             dependencies: ["DependencyInjection"]
-        ),
+        )
     ]
 )

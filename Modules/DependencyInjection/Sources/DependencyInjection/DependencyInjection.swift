@@ -9,7 +9,7 @@ public protocol DependencyInjectionProtocol {
     func resolve<T>(
         for type: T.Type
     ) -> T?
-    
+
     func resolveUnwrapped<T>(
         for type: T.Type
     ) -> T
@@ -17,13 +17,13 @@ public protocol DependencyInjectionProtocol {
 
 public final class DependencyInjection: DependencyInjectionProtocol {
     private let container: Container
-    
+
     public static let shared = DependencyInjection(container: Container())
-    
+
     init(container: Container) {
         self.container = container
     }
-    
+
     public func register<T>(
         type: T.Type,
         factory: @escaping () -> T
@@ -32,20 +32,20 @@ public final class DependencyInjection: DependencyInjectionProtocol {
             factory()
         }
     }
-    
+
     public func resolve<T>(
         for type: T.Type
     ) -> T? {
         container.resolve(type)
     }
-    
+
     public func resolveUnwrapped<T>(
         for type: T.Type
     ) -> T {
         guard let service = container.resolve(type) else {
             preconditionFailure("Object of type \(type) could not be recovered")
         }
-        
+
         return service
     }
 }
