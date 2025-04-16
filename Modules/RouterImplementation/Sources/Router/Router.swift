@@ -2,6 +2,7 @@ import RouterInterface
 import DependencyInjection
 import HomeInterface
 import PullRequestInterface
+import WebViewInterface
 import UIKit
 
 public final class Router: RouterProtocol {
@@ -22,6 +23,9 @@ public final class Router: RouterProtocol {
             var components = URLComponents()
             components.path = path
             return injector.resolve(for: PullRequestFactoryProtocol.self)?.build(params: components)
+        case WebRoute.path:
+            guard let path = route.query.first(where: { $0.name == "path"})?.value else { return nil }
+            return injector.resolve(for: WebViewFactoryProtocol.self)?.build(path: path)
         default:
             return nil
         }

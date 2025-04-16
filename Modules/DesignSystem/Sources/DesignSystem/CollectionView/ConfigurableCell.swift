@@ -9,7 +9,7 @@ import SnapKit
 
 open class ConfigurableCell<Content: ConfigurableView<ViewModel>,
                                 ViewModel: Equatable & Hashable>: UICollectionViewCell {
-    let content: Content
+    public let content: Content
 
     override public init(frame: CGRect) {
         self.content = Content()

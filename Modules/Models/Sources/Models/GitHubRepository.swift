@@ -19,6 +19,9 @@ public struct GitHubRepository: Codable, Equatable, Sendable {
     public let language: String?
     public let stargazersCount: Int
     public let watchersCount: Int
+    public let subscribersCount: Int?
+    public let openIssues: Int?
+    public let forks: Int?
     public let license: License?
 
     public struct License: Codable, Equatable, Sendable {

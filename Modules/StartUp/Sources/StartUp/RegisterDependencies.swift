@@ -13,6 +13,8 @@ import HomeInterface
 import HomeImplementation
 import PullRequestInterface
 import PullRequestImplementation
+import WebViewInterface
+import WebViewImplementation
 
 extension StartUp {
     public static func registerDependencies() {
@@ -36,6 +38,10 @@ extension StartUp {
 
         DependencyInjection.shared.register(type: PullRequestFactoryProtocol.self) {
             PullRequestFactory()
+        }
+
+        DependencyInjection.shared.register(type: WebViewFactoryProtocol.self) {
+            WebViewFactory()
         }
     }
 }

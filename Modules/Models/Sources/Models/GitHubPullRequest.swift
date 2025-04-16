@@ -7,19 +7,45 @@
 import Foundation
 
 public struct GitHubPullRequest: Decodable, Equatable, Sendable {
-    let nodeId: String
-    let htmlUrl: URL
-    let number: UInt32
-    let state: State
-    let title: String
-    let body: String?
-    let user: GitHubOwner
-    let createdAt: Date
-    let updatedAt: Date?
-    let closedAt: Date?
-    let mergedAt: Date?
+    public let nodeId: String
+    public let htmlUrl: URL
+    public let number: UInt32
+    public let state: State
+    public let title: String
+    public let body: String?
+    public let user: GitHubOwner
+    public let createdAt: Date
+    public let updatedAt: Date?
+    public let closedAt: Date?
+    public let mergedAt: Date?
 
-    enum State: String, Decodable {
+    public enum State: String, Decodable, Sendable {
         case open, closed
+    }
+
+    public init(
+        nodeId: String,
+        htmlUrl: URL,
+        number: UInt32,
+        state: State,
+        title: String,
+        body: String?,
+        user: GitHubOwner,
+        createdAt: Date,
+        updatedAt: Date?,
+        closedAt: Date?,
+        mergedAt: Date?
+    ) {
+        self.nodeId = nodeId
+        self.htmlUrl = htmlUrl
+        self.number = number
+        self.state = state
+        self.title = title
+        self.body = body
+        self.user = user
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+        self.closedAt = closedAt
+        self.mergedAt = mergedAt
     }
 }

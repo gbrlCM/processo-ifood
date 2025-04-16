@@ -15,7 +15,8 @@ let package = Package(
     dependencies: [
         .package(path: "../RouterInterface"),
         .package(path: "../Home"),
-        .package(path: "../PullRequest")
+        .package(path: "../PullRequest"),
+        .package(path: "../WebView")
     ],
     targets: [
         .target(
@@ -23,8 +24,8 @@ let package = Package(
             dependencies: [
                 "RouterInterface",
                 .product(name: "HomeInterface", package: "Home"),
-                .product(name: "PullRequestInterface", package: "PullRequest")
-
+                .product(name: "PullRequestInterface", package: "PullRequest"),
+                .product(name: "WebViewInterface", package: "WebView")
             ]
         ),
         .testTarget(

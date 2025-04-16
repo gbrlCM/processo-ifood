@@ -15,4 +15,15 @@ open class LayoutableViewController: UIViewController, Layoutable {
     open func setupHierarchy() {}
     open func setupLayout() {}
     open func setupStyle() {}
+
+    open override func viewWillAppear(_ animated: Bool) {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithDefaultBackground()
+        appearance.backgroundColor = UIColor(named: Colors.accent)
+        appearance.titleTextAttributes = [.foregroundColor: UIColor(named: Colors.text)]
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        UIBarButtonItem.appearance().tintColor = UIColor(named: Colors.text)
+    }
 }

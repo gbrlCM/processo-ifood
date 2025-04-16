@@ -57,6 +57,8 @@ where ViewModel.Item == Item, ViewModel.Section == Section {
         }
 
         setupCollectionViewBinding()
+        view.backgroundColor = UIColor(named: .background)
+        collectionView.backgroundColor = UIColor(named: .background)
     }
 
     private func setupCollectionViewBinding() {
@@ -77,17 +79,6 @@ where ViewModel.Item == Item, ViewModel.Section == Section {
 
     open func loading(with viewModel: ViewModel) {
         loadingView.loading(viewModel.isLoading)
-    }
-
-    open override func viewWillAppear(_ animated: Bool) {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithDefaultBackground()
-        appearance.backgroundColor = UIColor(named: Colors.accent)
-        appearance.titleTextAttributes = [.foregroundColor: UIColor(named: Colors.text)]
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance
-        UIBarButtonItem.appearance().tintColor = UIColor(named: Colors.text)
     }
 
     open func buildCell(
@@ -115,8 +106,9 @@ where ViewModel.Item == Item, ViewModel.Section == Section {
     ) {
         let snapshot = dataSource.snapshot()
         if snapshot.numberOfItems > 0,
-           (snapshot.numberOfItems - 1) == indexPath.row,
-           (snapshot.numberOfSections - 1) == indexPath.section {
+           (snapshot.numberOfSections - 1) == indexPath.section,
+           let section = dataSource.sectionIdentifier(for: indexPath.section),
+           (snapshot.numberOfItems(inSection: section) - 1) == indexPath.row {
             didScrollToTheEnd()
         }
     }

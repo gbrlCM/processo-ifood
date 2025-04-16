@@ -22,7 +22,8 @@ let package = Package(
         .package(path: "../Models"),
         .package(path: "../DesignSystem"),
         .package(path: "../DependencyInjection"),
-        .package(path: "../RouterInterface")
+        .package(path: "../RouterInterface"),
+        .package(url: "https://github.com/SnapKit/SnapKit.git", .upToNextMajor(from: "5.0.1"))
     ],
     targets: [
         .target(
@@ -34,7 +35,8 @@ let package = Package(
                 "Models",
                 "DesignSystem",
                 "DependencyInjection",
-                "RouterInterface"
+                "RouterInterface",
+                "SnapKit"
             ]
         ),
         .target(

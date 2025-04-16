@@ -19,6 +19,7 @@ let package = Package(
         .package(path: "../RouterInterface"),
         .package(path: "../Home"),
         .package(path: "../PullRequest"),
+        .package(path: "../WebView"),
         .package(path: "../Network")
     ],
     targets: [
@@ -35,7 +36,9 @@ let package = Package(
                 .product(name: "HomeInterface", package: "Home"),
                 .product(name: "HomeImplementation", package: "Home"),
                 .product(name: "PullRequestInterface", package: "PullRequest"),
-                .product(name: "PullRequestImplementation", package: "PullRequest")
+                .product(name: "PullRequestImplementation", package: "PullRequest"),
+                .product(name: "WebViewInterface", package: "WebView"),
+                .product(name: "WebViewImplementation", package: "WebView")
             ]
         ),
         .testTarget(

@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "WebView",
+    platforms: [.iOS(.v15)],
     products: [
         .library(
             name: "WebViewInterface",
@@ -15,13 +16,17 @@ let package = Package(
             targets: ["WebViewImplementation"]
         )
     ],
+    dependencies: [
+        .package(path: "../DesignSystem"),
+        .package(path: "../Network")
+    ],
     targets: [
         .target(
             name: "WebViewInterface"
         ),
         .target(
             name: "WebViewImplementation",
-            dependencies: ["WebViewInterface"]
+            dependencies: ["WebViewInterface", "Network", "DesignSystem"]
         ),
         .testTarget(
             name: "WebViewTests",

@@ -23,6 +23,7 @@ final class HomeInteractor: Reducer<Action, State> {
         case .search(let query):
             var newState = state
             newState.repositories = []
+            newState.page = 1
             return await searchRepos(query: query, state: newState)
         case .loadMore:
             return await loadMore(state: state)

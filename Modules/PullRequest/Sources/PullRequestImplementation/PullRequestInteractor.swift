@@ -4,34 +4,41 @@
 //
 //  Created by Gabriel Ferreira de Carvalho on 15/04/25.
 //
-
+import Foundation
 import ReducerCore
 
 final class PullRequestInteractor: Reducer<Action, State> {
     private let repository: PullRequestRepositoryProtocol
+    private let router: PullRequestRouterProtocol
 
-    init(repository: PullRequestRepositoryProtocol, initialState: State) {
+    init(
+        repository: PullRequestRepositoryProtocol,
+        router: PullRequestRouterProtocol,
+        initialState: State
+    ) {
         self.repository = repository
+        self.router = router
         super.init(initialState: initialState)
     }
 
     override func reduce(action: Action, for state: State) async -> State {
         switch action {
         case .initialLoad:
-            return await initialLoad(for: state)
+            return await initialLoad(for: State())
         case .loadMorePullRequests:
-            return state
+            return await loadMoreItems(for: state)
         case .tapPullRequestAt(let index):
-            return state
+            goToWebView(at: state.pullRequests[safe: index]?.htmlUrl.relativePath)
         case .tapRepository:
-            return state
+            goToWebView(at: state.repository?.htmlUrl.relativePath)
         case .shareRepo:
-            return state
+            share(url: state.repository?.htmlUrl)
         case .sharePullRequestAt(let index):
-            return state
+            share(url: state.pullRequests[safe: index]?.htmlUrl)
         case let .loading(value):
             return loading(state: state, value: value)
         }
+        return state
     }
 
     private func initialLoad(for state: State) async -> State {
@@ -46,6 +53,10 @@ final class PullRequestInteractor: Reducer<Action, State> {
             newState.isLoading = false
         } catch {
             newState.isLoading = false
+            newState.canLoadMore = false
+            router.error(message: "Ocorreu um error") { [weak self] in
+                self?.send(.initialLoad)
+            }
         }
 
         return newState
@@ -58,9 +69,15 @@ final class PullRequestInteractor: Reducer<Action, State> {
             let pullRequests = try await repository.pullRequests(page: state.page)
             newState.page += 1
             newState.pullRequests += pullRequests
+            newState.canLoadMore = !pullRequests.isEmpty
             newState.isLoading = false
         } catch {
             newState.isLoading = false
+            newState.canLoadMore = false
+            router.error(message: "Ocorreu um error") { [weak self] in
+                self?.send(.initialLoad)
+            }
+
         }
         return newState
     }
@@ -69,5 +86,17 @@ final class PullRequestInteractor: Reducer<Action, State> {
         var newState = state
         newState.isLoading = value
         return newState
+    }
+
+    private func goToWebView(at path: String?) {
+        if let path {
+            router.webView(for: path)
+        }
+    }
+
+    private func share(url: URL?) {
+        if let url {
+            router.share(for: url)
+        }
     }
 }
