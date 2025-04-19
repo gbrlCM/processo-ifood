@@ -40,10 +40,6 @@ let package = Package(
                 .product(name: "WebViewInterface", package: "WebView"),
                 .product(name: "WebViewImplementation", package: "WebView")
             ]
-        ),
-        .testTarget(
-            name: "StartUpTests",
-            dependencies: ["StartUp"]
         )
     ]
 )

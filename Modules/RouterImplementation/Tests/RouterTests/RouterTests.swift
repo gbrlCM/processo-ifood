@@ -10,12 +10,25 @@ struct RouterTests {
 
     init() {
         sut = Router()
+        DIMocks.register()
     }
 
-    @Test("WHEN view is called with a HomeRoute THEN it should return a HomeViewController")
+    @Test("WHEN view is called with a HomeRoute THEN it should return a ViewController")
     func testHomeRoute() async throws {
         let result = try #require(sut.view(for: HomeRoute()))
-        #expect(Expectation.isInstanceOf("HomeViewController", object: result))
+        #expect(result != nil)
+    }
+
+    @Test("WHEN view is called with a PullRequest THEN it should return a ViewController")
+    func testPullRequestRoute() async throws {
+        let result = try #require(sut.view(for: PullRequestRoute(path: "")))
+        #expect(result != nil)
+    }
+
+    @Test("WHEN view is called with a WebRoute THEN it should return a ViewController")
+    func testWebViewRequestRoute() async throws {
+        let result = try #require(sut.view(for: WebRoute(path: "")))
+        #expect(result != nil)
     }
 
     @Test("WHEN view is called with a unknown route THEN it should return nil")

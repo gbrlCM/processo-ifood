@@ -30,9 +30,19 @@ targets:
         type: application
         platform: iOS
         postCompileScripts:
-            - path: Scripts/swiftlint.sh
-              name: Swift Lint & Gen
-              script: "swiftlint"
+              name: Swift Lint
+              script: |
+                if [[ "$(uname -m)" == arm64 ]]
+                then
+                    export PATH="/opt/homebrew/bin:$PATH"
+                fi
+
+                if command -v swiftlint >/dev/null 2>&1
+                then
+                    swiftlint
+                else
+                    echo "warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions."
+                fi
         sources:
             - path: App
         dependencies:
@@ -40,4 +50,8 @@ targets:
         scheme:
             gatherCoverageData: true
             testTargets:
-                - package: StartUp/StartUpTests
+                - package: Home/HomeTests
+                - package: Network/NetworkTests
+                - package: RouterImplementation/RouterImplementationTests
+                - package: ReducerCore/ReducerCoreTests
+                - package: WebView/WebViewTests

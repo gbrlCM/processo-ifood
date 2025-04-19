@@ -8,6 +8,6 @@ import Foundation
 import RouterInterface
 
 struct UnknownRoute: Route {
-    var path: String = "/unknown"
-    var data: Data?
+    static let path: String = "/unknown"
+    var query: [URLQueryItem] = []
 }

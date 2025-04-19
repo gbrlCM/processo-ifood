@@ -1,3 +1,8 @@
+if [[ "$(uname -m)" == arm64 ]]
+then
+    export PATH="/opt/homebrew/bin:$PATH"
+fi
+
 if command -v swiftlint >/dev/null 2>&1
 then
     swiftlint

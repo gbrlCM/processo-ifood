@@ -16,13 +16,15 @@ let package = Package(
         .package(path: "../RouterInterface"),
         .package(path: "../Home"),
         .package(path: "../PullRequest"),
-        .package(path: "../WebView")
+        .package(path: "../WebView"),
+        .package(path: "../DependencyInjection")
     ],
     targets: [
         .target(
             name: "RouterImplementation",
             dependencies: [
                 "RouterInterface",
+                "DependencyInjection",
                 .product(name: "HomeInterface", package: "Home"),
                 .product(name: "PullRequestInterface", package: "PullRequest"),
                 .product(name: "WebViewInterface", package: "WebView")
@@ -31,7 +33,11 @@ let package = Package(
         .testTarget(
             name: "RouterImplementationTests",
             dependencies: [
-                "RouterImplementation"
+                "RouterImplementation",
+                "DependencyInjection",
+                .product(name: "HomeInterface", package: "Home"),
+                .product(name: "PullRequestInterface", package: "PullRequest"),
+                .product(name: "WebViewInterface", package: "WebView")
             ]
         )
     ]
