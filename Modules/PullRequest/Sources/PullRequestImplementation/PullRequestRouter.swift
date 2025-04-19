@@ -34,7 +34,8 @@ final class PullRequestRouter: PullRequestRouterProtocol {
     }
 
     func share(for url: URL) {
-        
+        let share = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        navigator?.present(viewController: share, animated: true)
     }
 
     func error(message: String, tryAgain: @escaping () -> Void) {

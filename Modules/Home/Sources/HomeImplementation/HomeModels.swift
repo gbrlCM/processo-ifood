@@ -8,7 +8,7 @@ import ReducerCore
 import Models
 import Foundation
 
-enum Action {
+enum Action: Equatable, Sendable {
     case search(query: String)
     case selectItemAt(index: Int)
     case restart
@@ -16,7 +16,7 @@ enum Action {
     case loading(Bool)
 }
 
-struct State: Equatable {
+struct State: Equatable, Sendable {
     var query: String = ""
     var repositories: [GitHubRepository] = []
     var canLoadMoreItems: Bool = true
@@ -38,4 +38,8 @@ struct RepositoryViewModel: Hashable, Sendable {
     let subtitle: String
     let createdDate: String
     let license: String?
+}
+
+struct GitHubRepoResponse: Decodable, Sendable {
+    let items: [GitHubRepository]
 }

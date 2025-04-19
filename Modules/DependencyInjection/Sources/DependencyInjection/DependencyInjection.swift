@@ -16,7 +16,7 @@ public protocol DependencyInjectionProtocol {
 }
 
 public final class DependencyInjection: DependencyInjectionProtocol {
-    private let container: Container
+    private var container: Container
 
     public static let shared = DependencyInjection(container: Container())
 
@@ -47,5 +47,9 @@ public final class DependencyInjection: DependencyInjectionProtocol {
         }
 
         return service
+    }
+
+    func emptyContainer() {
+        container = Container()
     }
 }

@@ -10,9 +10,14 @@ let package = Package(
         .library(
             name: "RouterInterface",
             targets: ["RouterInterface"]
+        ),
+        .library(
+            name: "RouterInterfaceTestHelpers",
+            targets: ["RouterInterfaceTestHelpers"]
         )
     ],
     targets: [
-        .target(name: "RouterInterface")
+        .target(name: "RouterInterface"),
+        .target(name: "RouterInterfaceTestHelpers", dependencies: ["RouterInterface"])
     ]
 )

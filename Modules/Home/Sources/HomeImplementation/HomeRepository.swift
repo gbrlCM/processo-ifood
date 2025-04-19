@@ -20,8 +20,12 @@ final actor HomeRepository: HomeRepositoryProtocol {
     }
 
     func fetchRepositories(for query: String, at page: Int) async throws -> [GitHubRepository] {
+        guard let url = queryUrl(query: query, page: page) else {
+            throw URLError(.badURL)
+        }
+
         let (data, _): (GitHubRepoResponse, URLResponse) = try await network
-            .fetch(from: queryUrl(query: query, page: page)!)
+            .fetch(from: url)
         return data.items
     }
 
@@ -36,8 +40,4 @@ final actor HomeRepository: HomeRepositoryProtocol {
         let builder = RouterBuilder(host: .api)
         return builder.build(for: components)
     }
-}
-
-struct GitHubRepoResponse: Decodable, Sendable {
-    let items: [GitHubRepository]
 }

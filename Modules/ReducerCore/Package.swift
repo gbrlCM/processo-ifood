@@ -11,6 +11,10 @@ let package = Package(
         .library(
             name: "ReducerCore",
             targets: ["ReducerCore"]
+        ),
+        .library(
+            name: "ReducerTestHelpers",
+            targets: ["ReducerTestHelpers"]
         )
     ],
     dependencies: [
@@ -23,6 +27,10 @@ let package = Package(
         .target(
             name: "ReducerCore",
             dependencies: ["SnapKit", "DesignSystem"]
+        ),
+        .target(
+            name: "ReducerTestHelpers",
+            dependencies: ["ReducerCore"]
         ),
         .testTarget(
             name: "ReducerCoreTests",

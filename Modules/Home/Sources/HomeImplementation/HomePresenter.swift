@@ -8,18 +8,20 @@ import ReducerCore
 import Foundation
 
 final class HomePresenter: Presenter<State, ViewModel> {
+    private lazy var dateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter
+    }()
+
     override func adapt(state: State) async -> ViewModel {
-        let dateFormarter = DateFormatter()
-
-        dateFormarter.dateStyle = .medium
-
         let items = state.repositories.map { repo in
             return RepositoryViewModel(
                 id: repo.id,
                 avatarUrl: repo.owner.avatarUrl,
                 title: repo.fullName,
                 subtitle: repo.description ?? "",
-                createdDate: dateFormarter.string(from: repo.createdAt),
+                createdDate: dateFormatter.string(from: repo.createdAt),
                 license: repo.license?.name
             )
         }

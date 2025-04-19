@@ -36,4 +36,15 @@ final class WebViewController: LayoutableViewController, WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         navigationItem.title = webView.title
     }
+
+    func webView(
+        _ webView: WKWebView,
+        decidePolicyFor navigationAction: WKNavigationAction
+    ) async -> WKNavigationActionPolicy {
+        guard let url = navigationAction.request.url else {
+            return .allow
+        }
+        let components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+        return components?.host == Host.web.rawValue ? .allow : .cancel
+    }
 }

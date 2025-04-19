@@ -23,6 +23,7 @@ let package = Package(
         .package(path: "../Models"),
         .package(path: "../ReducerCore"),
         .package(path: "../DesignSystem"),
+        .package(path: "../Network"),
         .package(url: "https://github.com/SnapKit/SnapKit.git", .upToNextMajor(from: "5.0.1"))
     ],
     targets: [
@@ -39,13 +40,25 @@ let package = Package(
                 "Models",
                 "ReducerCore",
                 "DesignSystem",
+                "Network",
                 "SnapKit"
             ],
             resources: [.process("Resources")]
         ),
         .testTarget(
             name: "HomeTests",
-            dependencies: ["HomeImplementation", "HomeInterface"]
+            dependencies: [
+                "HomeImplementation",
+                "HomeInterface",
+                "ReducerCore",
+                "Models",
+                "DependencyInjection",
+                "RouterInterface",
+                "Network",
+                .product(name: "RouterInterfaceTestHelpers", package: "RouterInterface"),
+                .product(name: "ReducerTestHelpers", package: "ReducerCore"),
+                .product(name: "NetworkTestHelpers", package: "Network")
+            ]
         )
     ]
 )
