@@ -1,5 +1,5 @@
 //
-//  HomeInteractortTests.swift
+//  HomeInteractorTests.swift
 //  Home
 //
 //  Created by Gabriel Ferreira de Carvalho on 17/04/25.
@@ -14,7 +14,7 @@ import Foundation
 
 @MainActor
 @Suite("GIVEN a HomeInteractor")
-struct HomeInteractortTests {
+struct HomeInteractorTests {
     let sut: HomeInteractor
     let routerSpy: HomeRouterSpy
     let repositorySpy: HomeRepositorySpy

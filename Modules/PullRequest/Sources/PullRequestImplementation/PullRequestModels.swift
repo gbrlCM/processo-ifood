@@ -8,7 +8,7 @@ import ReducerCore
 import Models
 import Foundation
 
-enum Action {
+enum Action: Equatable, Sendable {
     case initialLoad
     case loadMorePullRequests
     case tapPullRequestAt(index: Int)
@@ -18,7 +18,7 @@ enum Action {
     case sharePullRequestAt(index: Int)
 }
 
-struct State: Equatable {
+struct State: Equatable, Sendable {
     var repository: GitHubRepository?
     var pullRequests: [GitHubPullRequest] = []
     var isLoading: Bool = false

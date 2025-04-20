@@ -26,7 +26,9 @@ final class PullRequestInteractor: Reducer<Action, State> {
         case .initialLoad:
             return await initialLoad(for: State())
         case .loadMorePullRequests:
-            return await loadMoreItems(for: state)
+            if state.canLoadMore {
+                return await loadMoreItems(for: state)
+            }
         case .tapPullRequestAt(let index):
             goToWebView(at: state.pullRequests[safe: index]?.htmlUrl.relativePath)
         case .tapRepository:
@@ -51,6 +53,7 @@ final class PullRequestInteractor: Reducer<Action, State> {
             newState.repository = repo
             newState.pullRequests = pullRequests
             newState.isLoading = false
+            newState.canLoadMore = !pullRequests.isEmpty
         } catch {
             newState.isLoading = false
             newState.canLoadMore = false
