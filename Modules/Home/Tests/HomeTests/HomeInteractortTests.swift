@@ -134,7 +134,6 @@ struct HomeInteractortTests {
         #expect(result == expectedState)
     }
 
-
     private func repo(name: String) throws -> GitHubRepository {
         let url = try #require(URL(string: "https://www.example.com.br/path"))
         return GitHubRepository(

@@ -19,7 +19,7 @@ final actor HomeRepositorySpy: HomeRepositoryProtocol {
     func fetchRepositories(for query: String, at page: Int) async throws -> [GitHubRepository] {
         methods.append(.fetchRepositories(for: query, at: page))
 
-        guard let fetchResponse else { throw NSError() }
+        guard let fetchResponse else { throw URLError(.cannotCloseFile) }
         return fetchResponse
     }
 

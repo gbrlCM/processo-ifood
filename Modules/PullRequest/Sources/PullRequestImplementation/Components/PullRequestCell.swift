@@ -24,8 +24,8 @@ final class PullRequestView: ConfigurableView<PullRequestViewModel> {
 
     private let imageRepository = DependencyInjection.shared.resolve(for: ImageRepositoryProtocol.self)
 
-    var navigateButtonTapped: (() -> Void)? = nil
-    var shareButtonTapped: (() -> Void)? = nil
+    var navigateButtonTapped: (() -> Void)?
+    var shareButtonTapped: (() -> Void)?
 
     override func setupHierarchy() {
         addSubview(container)

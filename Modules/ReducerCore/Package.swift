@@ -34,7 +34,7 @@ let package = Package(
         ),
         .testTarget(
             name: "ReducerCoreTests",
-            dependencies: ["ReducerCore"]
+            dependencies: ["ReducerCore", "ReducerTestHelpers"]
         )
     ]
 )

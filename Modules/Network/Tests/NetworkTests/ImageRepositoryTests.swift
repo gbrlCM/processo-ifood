@@ -20,7 +20,12 @@ struct ImageRepositoryTests {
         sut = ImageRepository(network: networkSpy, cache: NSCache())
     }
 
-    @Test("WHEN fetch is called and data is not on the cache THEN it should execute de request and return a image successfully")
+    @Test(
+    """
+    WHEN fetch is called and data is not on the cache
+    THEN it should execute de request and return a image successfully
+    """
+    )
     func testFetchFromRemoteSuccess() async throws {
         let image = try #require(UIImage(systemName: "chevron.right"))
         let url = try #require(URL(string: "https://www.example.com.br"))
@@ -33,7 +38,11 @@ struct ImageRepositoryTests {
         await #expect(networkSpy.methods == [.fetchData(url: url)])
     }
 
-    @Test("WHEN fetch is called and data is not on the cache THEN it should execute de request and it failed so it should return nil")
+    @Test("""
+    WHEN fetch is called and data is not on the cache
+    THEN it should execute de request and it failed so it should return nil
+    """
+    )
     func testFetchFromRemoteFailed() async throws {
         let url = try #require(URL(string: "https://www.example.com.br"))
 

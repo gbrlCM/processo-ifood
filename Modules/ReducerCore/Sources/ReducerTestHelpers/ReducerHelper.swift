@@ -26,7 +26,6 @@ public final class ReducerHelper<Action: Equatable & Sendable, State: Equatable 
             .subscribe(states)
             .store(in: &cancellables)
 
-
         reducer
             .actionSubject
             .scan([]) { partial, value in partial + [value] }
@@ -37,9 +36,9 @@ public final class ReducerHelper<Action: Equatable & Sendable, State: Equatable 
     public func assertStates(equalTo result: [State]) async {
         await confirmation(
             "Could not find any State emition sequence equal to \(result)",
-            expectedCount: result.count
+            expectedCount: 1
         ) { confirmation in
-            states.sink { states in
+            states.print("Tests").sink { states in
                 if result == states {
                     confirmation()
                 }
@@ -52,7 +51,7 @@ public final class ReducerHelper<Action: Equatable & Sendable, State: Equatable 
             "Could not find any Action emition sequence equal to \(result)",
             expectedCount: 1
         ) { confirmation in
-            actions.sink { actions in
+            actions.print("Tests").sink { actions in
                 if result == actions {
                     confirmation()
                 }

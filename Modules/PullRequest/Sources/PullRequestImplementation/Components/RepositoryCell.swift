@@ -20,7 +20,7 @@ final class RepositoryView: ConfigurableView<RepositoryViewModel> {
     private let button: UIButton = UIButton(type: .system)
     private let container: UIStackView = UIStackView()
 
-    var navigateButtonTapped: (() -> Void)? = nil
+    var navigateButtonTapped: (() -> Void)?
 
     private let imageRepository = DependencyInjection.shared.resolve(for: ImageRepositoryProtocol.self)
 

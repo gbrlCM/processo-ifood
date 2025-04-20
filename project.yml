@@ -30,7 +30,7 @@ targets:
         type: application
         platform: iOS
         postCompileScripts:
-              name: Swift Lint
+            - name: Swift Lint
               script: |
                 if [[ "$(uname -m)" == arm64 ]]
                 then
@@ -55,3 +55,4 @@ targets:
                 - package: RouterImplementation/RouterImplementationTests
                 - package: ReducerCore/ReducerCoreTests
                 - package: WebView/WebViewTests
+                - package: PullRequest/PullRequestTests

@@ -44,7 +44,17 @@ let package = Package(
         ),
         .testTarget(
             name: "PullRequestTests",
-            dependencies: ["PullRequestImplementation"]
+            dependencies: [
+                "PullRequestImplementation",
+                "ReducerCore",
+                "Models",
+                "DependencyInjection",
+                "RouterInterface",
+                "Network",
+                .product(name: "RouterInterfaceTestHelpers", package: "RouterInterface"),
+                .product(name: "ReducerTestHelpers", package: "ReducerCore"),
+                .product(name: "NetworkTestHelpers", package: "Network")
+            ]
         )
     ]
 )

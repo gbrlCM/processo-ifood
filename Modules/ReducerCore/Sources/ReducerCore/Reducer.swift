@@ -39,7 +39,6 @@ open class Reducer<Action, State: Equatable> {
                     }
                 }
             }
-            .eraseToAnyPublisher()
             .subscribe(state)
             .store(in: &cancellables)
     }
