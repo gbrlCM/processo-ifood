@@ -169,7 +169,7 @@ struct PullRequestInteractorTests {
                 page: 2
             )
         )
-        #expect(routerSpy.methods == [.error(message: "Ocorreu um error")])
+        #expect(routerSpy.methods == [.error(message: L10n.Error.message)])
     }
 
     @Test("WHEN loading is called THEN it should update the loading value")

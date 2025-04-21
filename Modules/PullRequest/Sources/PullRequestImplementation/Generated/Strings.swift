@@ -10,17 +10,15 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
-  /// Localizable.strings
-  ///   Home
-  /// 
-  ///   Created by Gabriel Ferreira de Carvalho on 15/04/25.
-  internal static let name = L10n.tr("Localizable", "Name", fallback: "Repositorios")
   internal enum Error {
     /// Tentar novamente
     internal static let button = L10n.tr("Localizable", "Error.Button", fallback: "Tentar novamente")
     /// Algo de errado aconteceu
     internal static let message = L10n.tr("Localizable", "Error.Message", fallback: "Algo de errado aconteceu")
-    /// Error
+    /// Localizable.strings
+    ///   Home
+    /// 
+    ///   Created by Gabriel Ferreira de Carvalho on 15/04/25.
     internal static let title = L10n.tr("Localizable", "Error.Title", fallback: "Error")
   }
 }

@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "PullRequest",
+    defaultLocalization: "en",
     platforms: [.iOS(.v15)],
     products: [
         .library(
@@ -37,7 +38,8 @@ let package = Package(
                 "DependencyInjection",
                 "RouterInterface",
                 "SnapKit"
-            ]
+            ],
+            resources: [.process("Resources")]
         ),
         .target(
             name: "PullRequestInterface"

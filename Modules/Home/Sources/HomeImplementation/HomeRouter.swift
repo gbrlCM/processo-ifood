@@ -34,7 +34,12 @@ final class HomeRouter: HomeRouterProtocol {
 
     func error(message: String, tryAgain: @escaping () -> Void) {
         let viewController = DSErrorViewController()
-        viewController.configure(title: "Error", message: message, buttonTitle: L10n.Error.button, onTap: tryAgain)
+        viewController.configure(
+            title: L10n.Error.title,
+            message: message,
+            buttonTitle: L10n.Error.button,
+            onTap: tryAgain
+        )
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .pageSheet
         navigationController.sheetPresentationController?.detents = [.medium()]

@@ -77,7 +77,7 @@ final class PullRequestInteractor: Reducer<Action, State> {
         } catch {
             newState.isLoading = false
             newState.canLoadMore = false
-            router.error(message: "Ocorreu um error") { [weak self] in
+            router.error(message: L10n.Error.message) { [weak self] in
                 self?.send(.initialLoad)
             }
 

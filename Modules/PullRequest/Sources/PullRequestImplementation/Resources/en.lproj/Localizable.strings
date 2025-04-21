@@ -5,7 +5,6 @@
   Created by Gabriel Ferreira de Carvalho on 15/04/25.
 
 */
-"Name" = "Repositorios";
 "Error.Title" = "Error";
 "Error.Message" = "Algo de errado aconteceu";
 "Error.Button" = "Tentar novamente";
